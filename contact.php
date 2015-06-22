@@ -13,6 +13,7 @@ if(isset($_POST['email'])) {
     // from form
     $name = $_POST['name']; // required
     $email_from = $_POST['email']; // required
+	$subject = $_POST['subject']; // not required
     $message = $_POST['message']; // required
      
     $error_message = "";
@@ -48,6 +49,7 @@ if(isset($_POST['email'])) {
      
     $email_message .= "Name: ".clean_string($name)."\n";
     $email_message .= "Email: ".clean_string($email_from)."\n";
+	$email_message .= "Subject: ".clean_string($subject)."\n";
     $email_message .= "Message: ".clean_string($message)."\n";
      
 	// create email headers
@@ -57,7 +59,7 @@ if(isset($_POST['email'])) {
 	$mail_status = mail($email_to, $email_subject, $email_message, $headers); 
 	
 	if($mail_status){
-		print "<script> document.location.href='http://www.andrewwong.tk/success.html'; </script>";
+		print "<script> document.location.href='http://andrewwong.tk/success.html'; </script>";
 	}
 	else { 
 		echo "Error! Please try again.";
